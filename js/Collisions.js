@@ -94,7 +94,7 @@ const level1 = [
     0, 0, 0, 0,
 ]
 
-const totalTilesWidth = 128 //1024x4 , 1024 = screen size
+const totalTilesWidth = 128
 
 function parse2D(data) {
     const rows = []

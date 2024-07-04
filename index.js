@@ -92,7 +92,7 @@ function gameOver() {
     ctx.font = '24px sans-serif'
     ctx.fillText('Press R to Restart', canvas.width / 2, canvas.height / 2 + 50)
 }
-let gameOverFlag = false // Track if the game is over
+let gameOverFlag = false
 
 function main() {
     if (!gameOverFlag) {
@@ -104,7 +104,7 @@ function main() {
 
     if (gameOverFlag) {
         gameOver()
-        return // Stop updating game objects if game is over
+        return
     }
 
     bg.draw()
@@ -140,8 +140,6 @@ function main() {
         }
     }
 
-    //handle player bullet and enemy collison
-
     player.projectiles.forEach((projectile, projectileIndex) => {
         cannons.forEach((cannon, cannonIndex) => {
             if (
@@ -163,7 +161,6 @@ function main() {
         })
     })
 
-    //handle player and enemy bullet collison
     cannons.forEach((cannon, cannonIndex) => {
         cannon.projectiles.forEach((enemyProjectile, enemyIndex) => {
             if (

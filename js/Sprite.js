@@ -47,12 +47,10 @@ class Sprite {
             width: this.width,
             height: this.height,
         }
-        // Save the current state of the canvas
+
         ctx.save()
 
-        // Check the current direction and flip the image if necessary
         if (this.currentDirection === 'left') {
-            // Flip horizontally
             ctx.scale(-1, 1)
             ctx.drawImage(
                 this.image,
@@ -60,13 +58,12 @@ class Sprite {
                 cropbox.position.y,
                 cropbox.width,
                 cropbox.height,
-                -this.position.x - this.width * this.scale, // Adjust position for flipped image
+                -this.position.x - this.width * this.scale,
                 this.position.y,
                 this.width * this.scale,
                 this.height * this.scale
             )
         } else {
-            // Normal draw
             ctx.drawImage(
                 this.image,
                 cropbox.position.x,
@@ -80,7 +77,6 @@ class Sprite {
             )
         }
 
-        // Restore the canvas state to its original state
         ctx.restore()
 
         this.updateFrame()
@@ -92,6 +88,6 @@ class Sprite {
         if (this.elapsedFrame % this.frameBuffer === 0) {
             if (this.currentFrame < this.frameRate - 1) this.currentFrame++
             else if (this.loop) this.currentFrame = 0
-          }
+        }
     }
 }

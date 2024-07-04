@@ -105,24 +105,22 @@ class Enemy extends Sprite {
 
         this.hitbox = {
             position: {
-                x: this.position.x ,
-                y: this.position.y + 20 ,
+                x: this.position.x,
+                y: this.position.y + 20,
             },
             width: 100,
             height: 50,
         }
 
-        // Fire projectiles at a set interval
         this.fireInterval = setInterval(() => {
             this.fireProjectile()
-        }, 800) // Fire every 1000ms (1 second)
+        }, 800)
     }
 
     handleProjectile() {
-        // Update projectiles
         this.projectiles.forEach((projectile, index) => {
             projectile.update()
-            // Remove the projectile if it goes off screen
+
             if (
                 projectile.position.x < 0 ||
                 projectile.position.x > canvas.width
@@ -155,8 +153,8 @@ class Enemy extends Sprite {
     updateHitbox() {
         this.hitbox = {
             position: {
-                x: this.position.x ,
-                y: this.position.y + 20 ,
+                x: this.position.x,
+                y: this.position.y + 20,
             },
             width: 100,
             height: 50,
@@ -167,14 +165,6 @@ class Enemy extends Sprite {
         this.draw()
         this.handleProjectile()
         this.updateHitbox()
-
-        // ctx.fillStyle = 'rgba(0,0,255,0.5)'
-        // ctx.fillRect(
-        //     this.hitbox.position.x,
-        //     this.hitbox.position.y,
-        //     this.hitbox.width,
-        //     this.hitbox.height
-        // )
     }
 }
 

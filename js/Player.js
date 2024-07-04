@@ -35,7 +35,7 @@ class Player extends Sprite {
         }
 
         this.isHurt = false
-        this.hurtAnimationComplete = true // Track if hurt animation is complete
+        this.hurtAnimationComplete = true
 
         this.canJump = true
         this.jumpSize = -17
@@ -43,8 +43,8 @@ class Player extends Sprite {
         this.currentDirection = 'right'
         this.projectiles = []
 
-        this.canFire = true // Flag to indicate if player can fire
-        this.recoilOffset = { x: 0, y: 0 } // Recoil offset
+        this.canFire = true
+        this.recoilOffset = { x: 0, y: 0 }
 
         this.gun = new Sprite({
             position: {
@@ -69,17 +69,16 @@ class Player extends Sprite {
     handleHurt() {
         if (!this.isHurt) {
             this.isHurt = true
-            this.hurtAnimationComplete = false // Mark hurt animation as not complete
+            this.hurtAnimationComplete = false
             this.switchSprite('playerHurt')
         }
     }
 
-    // Method to handle player taking damage
     takeDamage() {
         this.health--
         if (this.health <= 0) {
             console.log('Player dead!')
-            gameOver() // Assuming gameOver function handles game over logic
+            gameOver()
         } else {
             console.log('Player hurt!')
             this.handleHurt()
@@ -88,7 +87,6 @@ class Player extends Sprite {
 
     handleInput(keys) {
         if (!this.isHurt && this.hurtAnimationComplete) {
-            // Only allow input handling if not hurt and animation is complete
             if (keys.d.pressed) {
                 this.currentDirection = 'right'
                 this.switchSprite('playerMove')
@@ -147,9 +145,8 @@ class Player extends Sprite {
         })
         this.projectiles.push(projectile)
 
-        this.canFire = false // Disable firing
+        this.canFire = false
 
-        // Apply recoil effect
         this.recoilOffset = {
             x: this.currentDirection === 'right' ? -10 : 10,
             y: -5,
@@ -178,10 +175,9 @@ class Player extends Sprite {
     }
 
     handleProjectile() {
-        // Update projectiles
         this.projectiles.forEach((projectile, index) => {
             projectile.update()
-            // Remove the projectile if it goes off screen
+
             if (
                 projectile.position.x + this.hitbox.width < 0 ||
                 projectile.position.x > canvas.width
@@ -192,7 +188,6 @@ class Player extends Sprite {
     }
 
     handleGravity() {
-        //stop at ground
         if (
             this.hitbox.position.y + this.hitbox.height + this.velocity.y <=
             canvas.height
@@ -236,7 +231,7 @@ class Player extends Sprite {
             this.image === this.animations.playerHurt.image &&
             this.currentFrame === this.animations.playerHurt.frameRate - 1
         ) {
-            this.hurtAnimationComplete = true // Mark hurt animation as complete
+            this.hurtAnimationComplete = true
             this.isHurt = false
         }
 
@@ -248,13 +243,5 @@ class Player extends Sprite {
         this.handleVerticalCollisions()
         this.handleProjectile()
         this.updateGun()
-
-        // ctx.fillStyle = 'rgba(0,0,255,0.5)'
-        // ctx.fillRect(
-        //     this.hitbox.position.x,
-        //     this.hitbox.position.y,
-        //     this.hitbox.width,
-        //     this.hitbox.height
-        // )
     }
 }
