@@ -11,11 +11,61 @@
                 align-items: center;
                 background: gray;
             }
+            h2 {
+                font-size: 2.5em;
+                margin-bottom: 20px;
+            }
+            .controls {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 5px;
+            }
+            .control {
+                background-color: #34495e;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                transition: transform 0.2s;
+            }
+            .control:hover {
+                transform: scale(1.05);
+            }
+            .key {
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+            .action {
+                margin-top: 10px;
+                font-size: 1.2em;
+            }
         </style>
     </head>
     <body>
+        <div class="controls">
+            <div class="control">
+                <div class="key">W</div>
+                <div class="action">Move Up</div>
+            </div>
+            <div class="control">
+                <div class="key">A</div>
+                <div class="action">Move Left</div>
+            </div>
+            <div class="control">
+                <div class="key">S</div>
+                <div class="action">Move Down</div>
+            </div>
+            <div class="control">
+                <div class="key">D</div>
+                <div class="action">Move Right</div>
+            </div>
+            <div class="control">
+                <div class="key">K</div>
+                <div class="action">Shoot</div>
+            </div>
+        </div>
+        
         <canvas></canvas>
-
         <script src="./js/Sprite.js"></script>
         <script src="./js/Collisions.js"></script>
         <script src="./js/Enemy.js"></script>
