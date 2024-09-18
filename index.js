@@ -4,12 +4,15 @@ const ctx = canvas.getContext('2d')
 canvas.width = 1024
 canvas.height = 576
 
+const backgroundImages = ['./assets/bg.png']
+const levelImages = ['./assets/level0.png']
+
 const bg = new Sprite({
     position: {
         x: 0,
         y: 0,
     },
-    imageSrc: './assets/bg.png',
+    imageSrc: backgroundImages[0],
 })
 
 const lvl = new Sprite({
@@ -17,7 +20,7 @@ const lvl = new Sprite({
         x: 0,
         y: 0,
     },
-    imageSrc: './assets/level.png',
+    imageSrc: levelImages[0],
 })
 
 const keys = {
